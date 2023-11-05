@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiMagnifyingGlass, HiMoon, HiSun } from "react-icons/hi2";
+import ThemeContext from "../Context/ThemeContext";
 const Header = () => {
   const [toggle, setToggle] = useState(true);
+  const { theme, setTheme } = useContext(ThemeContext);
+  useEffect(() => {
+    console.log("Theme", theme);
+  });
   return (
     <div className="flex items-center p-3">
       <img
@@ -10,12 +15,12 @@ const Header = () => {
         height={60}
         className="rounded-full"
       />
-      <div className="flex bg-slate-200 p-2 w-full items-center mx-5 rounded-full">
+      <div className="flex bg-slate-200 p-3 w-full items-center mx-5 rounded-full">
         <HiMagnifyingGlass />
         <input
           type="text"
           placeholder="Search Games"
-          className="bg-transparent outline-none"
+          className="bg-transparent outline-none "
         />
       </div>
       <div>
